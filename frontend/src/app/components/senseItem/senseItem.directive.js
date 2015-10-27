@@ -3,17 +3,17 @@
 
   angular
     .module('public')
-    .directive('ngNavbar', ngNavbar);
+    .directive('ngSenseItem', ngSenseItem);
 
   /** @ngInject */
-  function ngNavbar() {
+  function ngSenseItem() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/navbar/navbar.html',
+      templateUrl: 'app/components/senseItem/senseItem.html',
       scope: {
           creationDate: '='
       },
-      controller: NavbarController,
+      controller: senseItemController,
       controllerAs: 'vm',
       bindToController: true
     };
@@ -21,7 +21,7 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function senseItemController(moment) {
       var vm = this;
 
       // "vm.creation" is avaible by directive option "bindToController: true"
