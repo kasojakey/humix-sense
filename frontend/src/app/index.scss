@@ -27,39 +27,6 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
-html, body{
-	height: 100%;
-}
-
-.container-fluid{
-	height: 100%;
-}
-
-#header {
-	height: 25%;
-	background-color: #2D546A;
-	padding-top:1%;
-	padding-bottom:1%;
-}
-
-#header-first{
-	height:100%;
-}
-
-#profile-pic{
-	height:100%;
-}
-
-#header h1{
-	color: white;
-}
-
-#header img{
-	display: block;
-	margin: auto;
-	height: 100%;
-	width: auto;
-}
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
