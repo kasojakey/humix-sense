@@ -21,9 +21,14 @@
     return directive;
 
     /** @ngInject */
-    function senseContentController($scope, $modal, $log) {
+    function senseContentController(deviceList, $scope, $modal, $log) {
       var vm = this;
-      vm.id = "";
+
+      vm.getDervices = deviceList.getDevices;
+
+      $scope.$watch(function(){ return deviceList.getDevices}, function(newVal, oldVal){
+        $log.info('data change'+newVal+' '+oldVal);
+      }, true);
 
       vm.open = function(){
 
@@ -35,10 +40,9 @@
         });
 
         modalInstance.result.then(function (sense) {
-          // when modal close...
-          // 
-          // call the db api here 
           
+          deviceList.setDevice(sense.id, sense.imgId);
+
           $log.info('Generating sense id: ' + sense.id + ', imageId:' + sense.imgId);
 
         }, function () {
@@ -52,15 +56,13 @@
     function modalController($modalInstance){
       var vm = this;
 
-      var imgId = 10 + Math.floor(Math.random() * 54); // random image id
+      vm.imgId = 10 + Math.floor(Math.random() * 54); // random image id
       
       vm.senseId = ""; // sense id
-
-      vm.imgUrl = 'assets/images/bluemix-icon-list/i-appicon-' + imgId + '-50.png';
       
 
       vm.ok = function(){
-        $modalInstance.close({id: vm.senseId , imgId: imgId});
+        $modalInstance.close({id: vm.senseId , imgId: vm.imgId});
       };
 
       vm.cancel = function(){

@@ -11,22 +11,23 @@
       restrict: 'E',
       templateUrl: 'app/components/senseItem/senseItem.html',
       scope: {
-          creationDate: '='
+          senseId: '@',
+          imgId: '@'
       },
-      controller: senseItemController,
-      controllerAs: 'vm',
-      bindToController: true
+      link: function(scope, element, attrs) {
+        scope.sense = {};
+
+        attrs.$observe('senseId', function(senseId) {
+          scope.sense.senseId = senseId;          
+        });
+
+        attrs.$observe('imgId', function(imgId) {
+          scope.sense.imgId = imgId;
+        });
+      }
     };
 
     return directive;
-
-    /** @ngInject */
-    function senseItemController(moment) {
-      var vm = this;
-
-      // "vm.creation" is avaible by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow();
-    }
   }
 
 })();
