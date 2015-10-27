@@ -27,28 +27,13 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
-html, body{
-	height: 100%;
+.global-header {
+	height: 3.5em;
+	background-color: #26343F;
+	padding-top:1em;
+	padding-bottom:1em;
 }
 
-.container-fluid{
-	height: 100%;
-}
-
-#header {
-	height: 25%;
-	background-color: #2D546A;
-	padding-top:1%;
-	padding-bottom:1%;
-}
-
-#header-first{
-	height:100%;
-}
-
-#profile-pic{
-	height:100%;
-}
 
 #header h1{
 	color: white;
