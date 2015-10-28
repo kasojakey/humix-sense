@@ -7,18 +7,18 @@
 
 
   /** @ngInject */
-  function deviceList($http) {
+  function deviceList($http, $log) {
     var devices = {};
     $http({
       method: 'GET',
       url: 'api/devices'
     }).then(function successCallback(response) {
-        var data = JSON.parse(response.data.result);
+        var data = angular.fromJson(response.data.result);
         data.forEach(function(obj){
           devices[obj.senseId] = obj.senseIcon;
         });
       }, function errorCallback(response) {
-        console.log(response);
+        $log.info(response);
     });      
 
     this.getDevices = getDevices;
@@ -36,9 +36,9 @@
         url: 'api/registerDevice',
         data: {'senseId':senseId, 'senseIcon': iconId}
       }).then(function successCallback(response) {
-          console.log(response);
+          $log.info(response);
         }, function errorCallback(response) {
-          console.log(response);
+          $log.info(response);
       });      
       devices[senseId] = iconId;
     }
