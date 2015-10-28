@@ -3,10 +3,10 @@
 
   angular
     .module('public')
-    .directive('ngSenseItem', ngSenseItem);
+    .directive('ngSenseItem', ['deviceList',ngSenseItem]);
 
   /** @ngInject */
-  function ngSenseItem() {
+  function ngSenseItem(deviceList) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/senseItem/senseItem.html',
@@ -14,7 +14,7 @@
           senseId: '@',
           imgId: '@'
       },
-      link: function(scope, element, attrs) {
+      link: function(scope, element, attrs, senseItemController) {
         scope.sense = {};
 
         attrs.$observe('senseId', function(senseId) {
@@ -24,6 +24,8 @@
         attrs.$observe('imgId', function(imgId) {
           scope.sense.imgId = imgId;
         });
+
+        scope.delDevice = deviceList.delDevice;
       }
     };
 

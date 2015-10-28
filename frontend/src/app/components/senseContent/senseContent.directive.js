@@ -25,6 +25,7 @@
       var vm = this;
 
       vm.getDervices = deviceList.getDevices;
+      vm.delDevice = deviceList.delDevice;
 
       $scope.$watch(function(){ return deviceList.getDevices}, function(newVal, oldVal){
         $log.info('data change'+newVal+' '+oldVal);

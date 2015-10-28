@@ -8,14 +8,19 @@
 
   /** @ngInject */
   function deviceList($http) {
-    var data = {};
+    var data = {'humix':52,'hello':42};
 
     this.getDevices = getDevices;
     this.setDevice = setDevice;
     this.delDevice = delDevice;
 
     function getDevices() {
-      return data;
+      $http({
+        method: 'GET',
+        url: 'api/devices'
+      }).then(function successCallback(response){
+        return response;
+      }); 
     }
 
     function setDevice(senseId, iconId) {
@@ -36,7 +41,7 @@
       // call the backend api here to delete the data
       $http({
         method: 'DELETE',
-        url: 'api/device/'+'senseId'
+        url: 'api/devices/'+ senseId
       });      
 
       delete data[senseId];
