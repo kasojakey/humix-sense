@@ -7,7 +7,7 @@
 
 
   /** @ngInject */
-  function deviceList() {
+  function deviceList($http) {
     var data = {};
 
     this.getDevices = getDevices;
@@ -19,9 +19,16 @@
     }
 
     function setDevice(senseId, iconId) {
-      
       // call the backend api here to store the data
-      
+      $http({
+        method: 'POST',
+        url: 'api/registerDevice',
+        data: {'senseId':senseId, 'senseIcon': iconId}
+      }).then(function successCallback(response) {
+          console.log(response);
+        }, function errorCallback(response) {
+          console.log(response);
+      });      
       data[senseId] = iconId;
     }
 
