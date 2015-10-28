@@ -32,9 +32,12 @@
       data[senseId] = iconId;
     }
 
-    function delDevice(senseId) {
-      
+    function delDevice(senseId) {      
       // call the backend api here to delete the data
+      $http({
+        method: 'DELETE',
+        url: 'api/device/'+'senseId'
+      });      
 
       delete data[senseId];
     }
