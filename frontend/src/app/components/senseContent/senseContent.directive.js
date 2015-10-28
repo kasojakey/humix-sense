@@ -24,8 +24,9 @@
     function senseContentController(deviceList, $scope, $modal, $log) {
       var vm = this;
 
-      vm.getDervices = deviceList.getDevices;
+      vm.getDevices = deviceList.getDevices;
       vm.delDevice = deviceList.delDevice;
+      // vm.deviceEmpty = (angular.equals(vm.getDevices(),{})) ? true: false;
 
       $scope.$watch(function(){ return deviceList.getDevices}, function(newVal, oldVal){
         $log.info('data change'+newVal+' '+oldVal);

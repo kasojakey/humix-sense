@@ -5,8 +5,12 @@
   </div>
 
   <div class="row">
-  	<ng-sense-item class="col-md-4" ng-repeat="(key, val) in vm.getDervices()" sense-id="{{ key }}" img-id="{{ val }}"></ng-sense-item>
+  	<ng-sense-item class="col-md-4" ng-repeat="(key, val) in vm.getDevices()" sense-id="{{ key }}" img-id="{{ val }}"></ng-sense-item>
   </div>
+
+  <!-- <div class="row empty-text" ng-show="vm.deviceEmpty">
+      You have not yet registered any Humix Sense. 
+  </div> -->
 
 </div>
 
