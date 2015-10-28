@@ -15,19 +15,47 @@ module.exports = {
             return res.status(400).send({error: 'Missing property: senseId: '+senseId+', senseIcon: '+senseIcon});
         }
         log.info('Registering device: '+JSON.stringify({senseId: senseId, senseIcon: senseIcon}));
-        client.set(senseId, JSON.stringify({senseIcon: senseIcon}));
+        client.hset('humix', senseId, JSON.stringify({senseIcon: senseIcon}));
         res.send({result: 'OK'});
     },
 
     unregister: function(req, res) {
         var senseId = req.params.senseId;
         log.info('Unregistering device: '+senseId);
-        client.del(senseId);
+        client.hdel('humix', senseId);
         res.send({result: 'OK'});
     },
 
-    getDeviceList: function(req, res) {
-        client.keys('*', function(err, reply) {
+    unregisterall: function(req, res) {
+        var senseId = req.params.senseId;
+        log.info('Unregistering all devices');
+        client.del('humix');
+        res.send({result: 'OK'});
+    },
+
+    getAllDevices: function(req, res) {
+        client.hgetall('humix', function(err, reply) {
+            if (err) {
+                log.error(err);
+                return res.status(500).send({error: err});
+            }
+            if (!reply) {
+                return res.send({result: []});
+            }
+            var list = [];
+            Object.keys(reply).forEach(function(key) {
+                list.push({
+                    senseId: key,
+                    senseIcon: reply[key]
+                });
+            });
+            res.send({result: JSON.stringify(list)});
+        });
+    },
+
+    getDevice: function(req, res) {
+        var senseId = req.params.senseId;
+        client.hget('humix', senseId, function(err, reply) {
             if (err) {
                 log.error(err);
                 return res.status(500).send({error: err});
