@@ -14,7 +14,7 @@
           senseId: '@',
           imgId: '@'
       },
-      link: function(scope, element, attrs, senseItemController) {
+      link: function(scope, element, attrs) {
         scope.sense = {};
 
         attrs.$observe('senseId', function(senseId) {
