@@ -1,3 +1,4 @@
+# think (dir: /think)
 .config.json
 .dist
 .jshintignore
@@ -14,4 +15,14 @@ flows*.json
 nodes/node-red-nodes/
 node_modules
 public
+
+# front-end (dir: /think/frontend)
+bower_components
+coverage/
+.sass-cache/
+.idea/
+.tmp/
+dist/
+
+# other
 npm-debug.log
