@@ -22,7 +22,6 @@ coverage/
 .sass-cache/
 .idea/
 .tmp/
-dist/
 
 # other
 npm-debug.log
