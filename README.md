@@ -35,8 +35,9 @@ People can also choose to use google services if that is a preferable option.
 
 In general, the highlevel steps you need to setup a Humix-based robot are
 
-0. Prepare your hardware. The project use RPI 2 as default device. You can download a pre-build image from [here](http://119.81.185.45/humix_image/20160330-humix-jessie-alpha.img.gz). 
-   Connect your RPI 2 with speaker microphone. 
+0. Prepare your hardware. The project use RPI 2/3 as default device. You can download a pre-build image from [here](http://119.81.185.45/humix_image/20160330-humix-jessie-alpha.img.gz). 
+   Connect your RPI 2 with speaker and microphone via USB sound card. 
+   
 1. deploy Humix Think on Bluemix 
 
 2. deploy Humix Sense on your device acting as robot. 
@@ -47,8 +48,6 @@ In general, the highlevel steps you need to setup a Humix-based robot are
 3. Launch Humix Sense  
 
 For details steps, please refer to [humix-doc](https://github.com/project-humix/humix-docs) repository 
-
-
 
 
 # Copyright and License
