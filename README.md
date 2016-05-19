@@ -23,7 +23,7 @@ are routed to Humix Think. This micro service architecture make Humix an extensi
 module systems that could be enhanced incrementally.
 
 Currently the core Humix module that comes with Humix framework is ‘humix-dialog-module’. 
-This module use speech-recognition and text-to-speech engines  to support basic interaction with robot.  
+This module use speech-recognition and text-to-speech engines  to support basic interaction with robot. Find more information about humix-dialog-module [here]((https://github.com/project-humix/humix-dialog-module). 
 
 
 # Setup Your Humix
