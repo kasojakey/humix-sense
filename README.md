@@ -152,7 +152,7 @@ TODO: Add steps to use local fs as persistent storage
  
  We have simplified the steps required to setup Humix Sense by providing a base image. You can download the image here
  
-Image location ：[humix-sense.img](http://119.81.185.45/humix_image/20160330-humix-jessie-alpha.img.gz) 
+Image location ：[humix-sense.img](http://119.81.185.45/humix_image/humix-jessie-0.1.img.gz) 
 
 To save disk space, the image is compressed. So to copy the image into your SD card ( at least 16G ), run ( you need to replace the path and your sd disk number)
 
