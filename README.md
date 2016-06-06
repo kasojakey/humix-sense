@@ -27,7 +27,6 @@ This module use speech-recognition and text-to-speech engines  to support basic 
 
 
 
-
 # Hardware Requirement 
 
 Here are use RaspberryPi as reference development board, but any device that can run Node.js 4.2.x+ would do. 
@@ -41,6 +40,7 @@ Here are use RaspberryPi as reference development board, but any device that can
     
 
 # Setup Humix Think
+
 
 ## 1. Create your bluemix account
 
@@ -211,7 +211,11 @@ When you see the follow result, then your `humix sense` has been successfully co
 You can now config the basic flow on `humix think`
 
    
+   
+# Other Languages   
 
+* [中文版的安裝設定](https://github.com/project-humix/humix-docs/blob/master/howto/Howto-setup-humix_cht.md)
+ 
 
 
 
