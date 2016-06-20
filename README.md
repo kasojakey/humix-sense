@@ -214,10 +214,13 @@ You can now config the basic flow on `humix think`
    
 # Other Languages   
 
+<<<<<<< HEAD
 * [中文版的安裝設定](https://github.com/project-humix/humix-docs/blob/master/howto/Howto-setup-humix_cht.md)
  
 
 
+=======
+>>>>>>> 4bebee1a7ef639111ec6d9d81ecdc61c7a3e5efe
 # Copyright and License
 
 Copyright 2016 IBM Corp. Under the Apache 2.0 license.
