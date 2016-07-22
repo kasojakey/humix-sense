@@ -217,9 +217,6 @@ You can now config the basic flow on `humix think`
 * [中文版的安裝設定](https://github.com/project-humix/humix-docs/blob/master/howto/Howto-setup-humix_cht.md)
  
 
-
-
-
 # Copyright and License
 
 Copyright 2016 IBM Corp. Under the Apache 2.0 license.

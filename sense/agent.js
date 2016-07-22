@@ -9,7 +9,8 @@
  */
 'use strict';
 
-var log = require('logule').init(module, 'Agent'),
+var bunyan = require("bunyan"),
+    log = null,
     EventEmitter = require('events').EventEmitter,
     emitter = new EventEmitter,
     WebSocket = require('ws');
@@ -48,6 +49,24 @@ function commandHandler(data, flags) {
 }
 
 function registerModulesToThink(moduleList) {
+
+}
+
+function publish_syncResult(syncCmdId, message) {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+        var event = {
+            senseId: config.id,
+            syncCmdId: syncCmdId,
+            data: message
+        };
+        socket.send(JSON.stringify(event), function(error) {
+            if (error) {
+                log.error('Error occurred while publising event: %s, ERRMSG: %s', JSON.stringify(event), error);
+            }
+        });
+    } else {
+        log.error('Connection to Think is broken, message: '+message);
+    }
 
 }
 
@@ -96,8 +115,24 @@ function connect(id) {
     }
 
     socket.on('open', function () {
-        log.info('Connected to Think successfully.');
+        log.info('Connected SenseId %s to Think successfully.', config.id);
         currentState = 'CONNECTED';
+
+        var initData = {
+            senseId : config.id,
+            data: {
+                eventType: 'humix-think',
+                eventName: 'sense.status',
+                message: 'connected'
+            }
+        }
+
+        socket.send(JSON.stringify(initData), function(error) {
+            if (error) {
+                log.error('Error occurred while publising senseid : %s, ERRMSG: %s', config.id, error);
+            }
+        });
+
     });
 
     socket.on('message', commandHandler);
@@ -125,9 +160,9 @@ function init(thinkUrl, senseId, options) {
     if (thinkUrl) {
         if (typeof thinkUrl === 'string') {
             if (thinkUrl.slice(-1) !== '/') {
-                url = thinkUrl+'/node-red/comms';
+                url = thinkUrl+'/node-red/comms_sense';
             } else {
-                url = thinkUrl+'node-red/comms';
+                url = thinkUrl+'node-red/comms_sense';
             }
         } else {
             throw new Error('Invalid Url format');
@@ -143,6 +178,7 @@ function init(thinkUrl, senseId, options) {
     config.url = url;
     config.id = senseId || undefined;
     config.options = options || {};
+    log = options.logger.child({component:'Agent'});
 }
 
 function start() {
@@ -169,5 +205,6 @@ module.exports = {
     stop: stop,
     publish: publish,
     events: emitter,
+    publish_syncResult: publish_syncResult,
     getState: function () { return currentState; }
 };
