@@ -1,7 +1,7 @@
 // username and password to access itir text-to-speeach access
 
 module.exports = {
-    thinkURL : 'your_think_url',
-    senseId  : 'your_sense_id',
+    thinkURL : 'humix-jakey',
+    senseId  : 'humix-jakey',
     log : { file: './sense.log', level: 'debug' }
 }
